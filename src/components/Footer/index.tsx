@@ -3,7 +3,7 @@ import React from 'react';
 import Container from 'components/ui/Container';
 
 const Footer: React.FC = () => (
-  <footer className="border-t border-gray-200 py-4">
+  <footer className="border-t border-gray-200 dark:border-gray-600 py-4">
     <Container>
       <div className="flex items-center justify-center w-full">
         <a

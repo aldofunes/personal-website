@@ -1,12 +1,15 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+
+import cx from 'classnames';
 
 interface Props {
-  content: any;
+  content: string;
+  className?: string;
 }
 
-const FormatHtml: React.FC<Props> = ({ content }) => (
+const FormatHtml: React.FC<Props> = ({ content, className }) => (
   <div
-    className="format-html font-serif"
+    className={cx('format-html', className)}
     dangerouslySetInnerHTML={{
       __html: content
     }}

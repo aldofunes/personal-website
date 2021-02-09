@@ -33,7 +33,7 @@
   }
 
   hr {
-    @apply my-5;
+    @apply my-5 dark:border-gray-600;
   }
 }
 

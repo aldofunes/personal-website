@@ -1,5 +1,5 @@
 ---
 category: 'skills'
-title: 'Gatsby'
+title: 'Terraform'
 percentage: 68
 ---

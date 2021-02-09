@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Banner: React.FC<Props> = ({ title, subtitle, content, linkTo, linkText }) => (
-  <section className="bg-gray-100 dark:bg-gray-700 border-b border-indigo-100 dark:border-indigo-900">
+  <section className="bg-gray-100 dark:bg-gray-800 border-b border-indigo-100 dark:border-gray-600">
     <Container section>
       <TitleSection title={title} subtitle={subtitle} />
       <p className="mb-8">{content}</p>

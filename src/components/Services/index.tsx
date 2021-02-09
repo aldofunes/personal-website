@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import InfoBlock from 'components/ui/InfoBlock';
 import Container from 'components/ui/Container';
+import FormatHtml from 'components/utils/FormatHtml';
 import TitleSection from 'components/ui/TitleSection';
 import { IconProps } from 'components/ui/Icon';
 
@@ -14,8 +15,8 @@ interface Service {
     frontmatter: {
       title: string;
       icon: IconProps;
-      description: string;
     };
+    html: string;
   };
 }
 
@@ -35,8 +36,8 @@ const Services: React.FC = () => {
             frontmatter {
               title
               icon
-              description
             }
+            html
           }
         }
       }
@@ -53,12 +54,13 @@ const Services: React.FC = () => {
         {services.map((item) => {
           const {
             id,
-            frontmatter: { title, icon, description }
+            html,
+            frontmatter: { title, icon }
           } = item.node;
 
           return (
             <div className="w-full sm:w-1/2" key={id}>
-              <InfoBlock icon={icon} title={title} content={description} />
+              <InfoBlock icon={icon} title={title} content={<FormatHtml content={html} />} />
             </div>
           );
         })}

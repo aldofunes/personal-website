@@ -17,7 +17,7 @@ const InfoBlock: React.FC<Props> = ({ icon, title, content, url, center = false 
       'items-center': center
     })}
   >
-    <span className="flex items-center justify-center w-10 h-10 text-indigo-500 border border-blue-400 rounded-full mb-2">
+    <span className="flex items-center justify-center w-10 h-10 text-indigo-500 dark:text-indigo-300 border border-blue-400 dark:border-blue-600 rounded-full mb-2">
       <Icon icon={icon} />
     </span>
     <div className={cx({ 'text-center': center })}>

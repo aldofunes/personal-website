@@ -1,0 +1,39 @@
+name: Production Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: chrislennon/action-aws-cli@v1.1
+      - name: NPM Install
+        run: |
+          npm ci
+      - name: Production Build
+        run: |
+          npm run build
+      # - name: Unit Tests
+      #   run: |
+      #     yarn test
+      - name: Deploy to S3
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws s3 sync public s3://${AWS_S3_BUCKET} --cache-control max-age=31536000,public --exclude index.html
+          aws s3 cp public/index.html s3://${AWS_S3_BUCKET}/index.html --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type text/html

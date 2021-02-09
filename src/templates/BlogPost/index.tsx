@@ -9,7 +9,7 @@ import TitleSection from 'components/ui/TitleSection';
 import FormatHtml from 'components/utils/FormatHtml';
 
 interface Post {
-  html: React.ReactNode;
+  html: string;
   fields: {
     slug: string;
   };
@@ -39,7 +39,7 @@ const BlogPost: React.FC<Props> = ({ data, pageContext }) => {
       <SEO title={post.frontmatter.title} />
       <Container section>
         <TitleSection title={post.frontmatter.date} subtitle={post.frontmatter.title} />
-        <FormatHtml content={post.html} />
+        <FormatHtml content={post.html} className="font-serif" />
         <div className="w-full flex justify-between mt-10">
           <span>
             {previous && (
