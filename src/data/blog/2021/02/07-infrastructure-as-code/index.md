@@ -177,3 +177,17 @@ Also, the first thing attackers look for when gaining access to a network are CI
 We can store all our parameters in a centralized registry, this can range from simple files in some file server, to a Consul cluster or a SQL database. Of course, we have to use another pattern to set the connection parameters to our registry; but once plugged it, changing it becomes a matter of executing a query, or modifying a file.
 
 The main issue with this pattern is the fact that we are adding something more to manage, the registry itself. This registry is an extra moving piece and a potential point of failure.
+
+# Testing
+
+If good testing yields great results for application development, we can assume it will be very useful while defining our infrastructure as code.
+
+Testing infrastructure code is not easy. Many frameworks use declarative languages, which makes unit tests for these declarations somewhat useless. If we declare that we want a server with 1 CPU and 2 GB of RAM, the test that we write might check for these attributes. We are simply re-stating what we declared in the code. With this test, we are testing that the provider and the tool works as promised, not that our code does what we intend. Unit testing is reserved, then, for those sneaky pieces of code that are influenced by configuration parameters, and why not, for testing around known issues with the tools of platforms we use.
+
+The heavy burden will lie on integration tests. If we want three subnets: `subnet-a` is public, `subnet-b` is private, `subnet-c` is private and does not have access to the other subnets; we can test for exactly that, that we can reach `subnet-a` through internet, that `subnet-b` can access `subnet-a`, and that `subnet-c` cannot access the other subnets. This is much more useful, since we are testing several moving pieces. Provisioning networks include access rules, routing tables, subnet masks, internet gateways, nat gateways, and some other pieces that provisioned together will provide a useful network; we might as well test that it works like we want it to.
+
+Integration tests are slower than unit tests, since we must provision actual resources on real platforms. The slowness gets worse when we make end-to-end tests. When we provision our entire infrastructure to test, that is.
+
+The key thing is to identify risks, in our case, our risk is that we may accidentally expose `subnet-c` to the outside world; therefore we test to ensure that risk does not become a reality.
+
+
