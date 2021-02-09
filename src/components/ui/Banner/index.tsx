@@ -5,8 +5,6 @@ import Container from 'components/ui/Container';
 import Button from 'components/ui/Button';
 import TitleSection from 'components/ui/TitleSection';
 
-import * as Styled from './styles';
-
 interface Props {
   title: string;
   subtitle?: string;
@@ -16,15 +14,15 @@ interface Props {
 }
 
 const Banner: React.FC<Props> = ({ title, subtitle, content, linkTo, linkText }) => (
-  <Styled.Banner>
+  <section className="bg-gray-100 dark:bg-gray-700 border-b border-indigo-100 dark:border-indigo-900">
     <Container section>
       <TitleSection title={title} subtitle={subtitle} />
-      <Styled.Content>{content}</Styled.Content>
+      <p className="mb-8">{content}</p>
       <Link to={linkTo}>
         <Button primary>{linkText}</Button>
       </Link>
     </Container>
-  </Styled.Banner>
+  </section>
 );
 
 export default Banner;

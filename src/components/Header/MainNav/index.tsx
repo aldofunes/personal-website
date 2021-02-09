@@ -1,6 +1,7 @@
+import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
-import * as Styled from './styles';
+import cx from 'classnames';
 
 interface MainNavItem {
   title: string;
@@ -31,23 +32,46 @@ const MainNav: React.FC = () => {
 
   return (
     <>
-      <Styled.MainNav open={open}>
+      <nav
+        className={cx(
+          { hidden: !open, flex: open },
+          'sm:flex flex-col sm:flex-row sm:w-auto w-full order-last sm:order-none my-4 sm:my-0'
+        )}
+      >
         {mainNavItems.map((item, index) => (
-          <Styled.MainNavItem
+          <Link
+            className="text-indigo-900 dark:text-indigo-100 border-b border-transparent hover:text-indigo-800 dark:hover:text-indigo-200 ml-0 sm:ml-8 mt-3 sm:mt-0 w-max"
             key={`nav-item-${index}`}
             to={item.slug}
-            activeClassName="active"
-            whileTap={{ scale: 0.9 }}
+            activeClassName="border-blue-400"
           >
             {item.title}
-          </Styled.MainNavItem>
+          </Link>
         ))}
-      </Styled.MainNav>
-      <Styled.ToogleMainNav open={open} onClick={() => setOpen(!open)}>
-        <span />
-        <span />
-        <span />
-      </Styled.ToogleMainNav>
+      </nav>
+      <button
+        className={cx('flex flex-col items-end justify-center cursor-pointer w-6 h-5 sm:hidden')}
+        onClick={() => setOpen(!open)}
+      >
+        <span
+          className={cx('bg-indigo-500 inline-block w-6 h-px transition duration-500 ease-in-out', {
+            '-mb-px transform rotate-45': open,
+            'mb-1': !open
+          })}
+        />
+        <span
+          className={cx('bg-blue-400 inline-block w-8 h-px transition duration-500 ease-in-out', {
+            'opacity-0 transform translate-x-5': open,
+            'opacity-1': !open
+          })}
+        />
+        <span
+          className={cx('bg-indigo-500 inline-block w-6 h-px transition duration-500 ease-in-out', {
+            '-mt-px transform -rotate-45': open,
+            'mt-1': !open
+          })}
+        />
+      </button>
     </>
   );
 };

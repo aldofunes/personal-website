@@ -9,7 +9,6 @@ import TitleSection from 'components/ui/TitleSection';
 
 import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
 
-import * as Styled from './styles';
 
 interface Post {
   node: {
@@ -76,7 +75,7 @@ const Posts: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Posts>
+      <div className="w-full flex flex-wrap">
         {posts.map((item) => {
           const {
             id,
@@ -85,30 +84,37 @@ const Posts: React.FC = () => {
           } = item.node;
 
           return (
-            <Styled.Post key={id}>
+            <div key={id} className="w-full sm:w-1/2 p-3">
               <Link to={slug}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
-                  <Styled.Card>
-                    <Styled.Image>
-                      <Img fluid={cover.childImageSharp.fluid} alt={title} />
-                    </Styled.Image>
-                    <Styled.Content>
-                      <Styled.Date>{date}</Styled.Date>
-                      <Styled.Title>{title}</Styled.Title>
-                      <Styled.Description>{description}</Styled.Description>
-                    </Styled.Content>
-                    <Styled.Tags>
+                  <div className="w-full h-full rounded-lg flex flex-col overflow-hidden border border-gray-300 dark:border-gray-700">
+                    {cover.childImageSharp.fluid && (
+                      <figure className="w-full">
+                        <Img fluid={cover.childImageSharp.fluid} alt={title} />
+                      </figure>
+                    )}
+                    <div className="p-4 text-indigo-900 dark:text-indigo-100">
+                      <h3 className="text-xs text-indigo-500">{date}</h3>
+                      <h3 className="font-semibold mb-4">{title}</h3>
+                      <p>{description}</p>
+                    </div>
+                    <div className="p-4 pt-2 mt-auto">
                       {tags.map((item) => (
-                        <Styled.Tag key={item}>{item}</Styled.Tag>
+                        <span
+                          key={item}
+                          className="text-xs text-indigo-900 dark:text-indigo-100 dark:text-indigo-1 border border-blue-400 dark:border-blue-600 rounded-full px-2 py-1 mr-2"
+                        >
+                          {item}
+                        </span>
                       ))}
-                    </Styled.Tags>
-                  </Styled.Card>
+                    </div>
+                  </div>
                 </motion.div>
               </Link>
-            </Styled.Post>
+            </div>
           );
         })}
-      </Styled.Posts>
+      </div>
     </Container>
   );
 };

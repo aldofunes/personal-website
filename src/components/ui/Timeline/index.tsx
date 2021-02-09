@@ -1,7 +1,5 @@
 import React from 'react';
 
-import * as Styled from './styles';
-
 interface Props {
   title: string;
   subtitle: string;
@@ -11,17 +9,17 @@ interface Props {
 }
 
 const Timeline: React.FC<Props> = ({ title, subtitle, content, startDate, endDate }) => (
-  <Styled.Timeline>
-    <Styled.Point />
-    <Styled.Details>
-      <Styled.Date>
+  <div className="flex flex-col sm:flex-row w-full p-4 relative border-l border-indigo-200 last:pb-0">
+    <span className="w-4 h-4 border border-indigo-200 bg-indigo-100 rounded-full absolute -left-2 top-4" />
+    <div className="w-full sm:w-1/3">
+      <div className="text-xs border  border-blue-400 rounded-full px-2 w-max">
         {startDate} - {endDate}
-      </Styled.Date>
-      <Styled.Title>{title}</Styled.Title>
-      <Styled.Subtitle>{subtitle}</Styled.Subtitle>
-    </Styled.Details>
-    <Styled.Content>{content}</Styled.Content>
-  </Styled.Timeline>
+      </div>
+      <div className="font-semibold mt-3">{title}</div>
+      <div className="text-xs">{subtitle}</div>
+    </div>
+    <div className="w-full sm:w-2/3 mt-4 sm:mt-0">{content}</div>
+  </div>
 );
 
 export default Timeline;

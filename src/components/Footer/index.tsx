@@ -2,28 +2,29 @@ import React from 'react';
 
 import Container from 'components/ui/Container';
 
-import * as Styled from './styles';
-
 const Footer: React.FC = () => (
-  <Styled.Footer>
+  <footer className="border-t border-gray-200 py-4">
     <Container>
-      <Styled.Links>
-        <Styled.Link href="/" rel="noreferrer noopener" target="_blank">
-          GitHub
-        </Styled.Link>
-        <Styled.Link
-          href="https://github.com/SaimirKapaj/gatsby-markdown-typescript-personal-website"
+      <div className="flex items-center justify-center w-full">
+        <a
+          className="text-indigo-900 dark:text-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-100 mx-2"
+          href="https://github.com/aldofunes"
           rel="noreferrer noopener"
           target="_blank"
         >
-          Twitter
-        </Styled.Link>
-        <Styled.Link href="/" rel="noreferrer noopener" target="_blank">
-          Behance
-        </Styled.Link>
-      </Styled.Links>
+          GitHub
+        </a>
+        <a
+          className="text-indigo-900 dark:text-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-100 mx-2"
+          href="https://gitlab.com/users/aldofunes"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          GitLab
+        </a>
+      </div>
     </Container>
-  </Styled.Footer>
+  </footer>
 );
 
 export default Footer;

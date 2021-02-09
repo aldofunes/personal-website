@@ -1,21 +1,20 @@
 import React from 'react';
 
-import * as Styled from './styles';
-
-interface Props extends Styled.StyledProps {
+interface Props {
   title: string;
+  percentage: number;
 }
 
 const ProgressBar: React.FC<Props> = ({ title, percentage }) => (
-  <Styled.ProgressBar>
-    <Styled.Content>
-      <Styled.Title>{title}</Styled.Title>
-      <Styled.Percentage>{percentage}%</Styled.Percentage>
-    </Styled.Content>
-    <Styled.BarWrapper>
-      <Styled.Bar percentage={percentage} />
-    </Styled.BarWrapper>
-  </Styled.ProgressBar>
+  <div className="p-3">
+    <div className="w-full flex justify-between">
+      <h3 className="font-semibold">{title}</h3>
+      <h3 className="font-semibold">{percentage}%</h3>
+    </div>
+    <div className="w-full h-2 bg-gray-300 rounded overflow-hidden mt-1">
+      <div className="h-2 bg-blue-400" style={{ width: `${percentage}%` }} />
+    </div>
+  </div>
 );
 
 export default ProgressBar;

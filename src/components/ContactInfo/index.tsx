@@ -8,8 +8,6 @@ import { IconProps } from 'components/ui/Icon';
 
 import { SectionTitle } from 'helpers/definitions';
 
-import * as Styled from './styles';
-
 interface Contact {
   node: {
     id: string;
@@ -17,6 +15,7 @@ interface Contact {
       title: string;
       content: string;
       icon: IconProps;
+      url?: string;
     };
   };
 }
@@ -38,6 +37,7 @@ const ConctactInfo: React.FC = () => {
               title
               icon
               content
+              url
             }
           }
         }
@@ -54,13 +54,13 @@ const ConctactInfo: React.FC = () => {
       {contacts.map((item) => {
         const {
           id,
-          frontmatter: { title, icon, content }
+          frontmatter: { title, icon, content, url }
         } = item.node;
 
         return (
-          <Styled.ContactInfoItem key={id}>
-            <InfoBlock icon={icon} title={title} content={content} center />
-          </Styled.ContactInfoItem>
+          <div className="w-full sm:w-1/2" key={id}>
+            <InfoBlock icon={icon} title={title} content={content} url={url} center />
+          </div>
         );
       })}
     </Container>

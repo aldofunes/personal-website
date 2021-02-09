@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby.JS`,
-    description: `Gatsby Markdown Personal Website Starter, using Typescript, Styled Components, Tailwindcss and Framer Motion.`,
-    author: `Saimir Kapaj`
+    title: `Aldo Funes`,
+    description: `Personal Website`,
+    author: `Aldo Funes`
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -31,7 +31,8 @@ module.exports = {
               maxWidth: 768,
               linkImagesToOriginal: false
             }
-          }
+          },
+          `gatsby-remark-prismjs`,
         ]
       }
     },
@@ -40,13 +41,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-personal-website-starter`,
-        short_name: `starter`,
+        name: `Aldo Funes' personal website`,
+        short_name: `Aldo Funes`,
         start_url: `/`,
         background_color: `#81e6d9`,
         theme_color: `#81e6d9`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`
+        icon: `src/assets/images/icon.png`
       }
     },
     `gatsby-plugin-offline`,

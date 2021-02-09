@@ -4,11 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Newsletter from 'components/Newsletter';
 
 import 'assets/styles/global.css';
-import GlobalStyles from 'assets/styles/globalStyles';
-import * as Styled from './styles';
 
 interface Props {
   children: React.ReactNode;
@@ -26,10 +23,8 @@ const Layout: React.FC<Props> = ({ children }) => {
   `);
 
   return (
-    <>
-      <GlobalStyles />
       <AnimatePresence exitBeforeEnter>
-        <Styled.Layout>
+        <main className="flex flex-col min-h-screen">
           <Header siteTitle={data.site.siteMetadata.title} />
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -38,12 +33,10 @@ const Layout: React.FC<Props> = ({ children }) => {
             transition={{ delay: 0.2 }}
           >
             {children}
-            <Newsletter />
             <Footer />
           </motion.div>
-        </Styled.Layout>
+        </main>
       </AnimatePresence>
-    </>
   );
 };
 

@@ -1,15 +1,27 @@
 import React from 'react';
 
-import * as Styled from './styles';
+import cx from 'classnames';
 
-interface Props extends Styled.StyledProps {
+interface Props {
   children: React.ReactNode;
+  primary?: boolean;
+  block?: boolean;
 }
 
-const Button: React.FC<Props & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ primary, block, children }) => (
-  <Styled.Button primary={primary} block={block} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+const Button: React.FC<Props & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  primary = false,
+  block = false,
+  children
+}) => (
+  <button
+    className={cx('py-2 px-8 rounded-full border border-blue-300 text-indigo-900 outline-none', {
+      'bg-blue-300': primary,
+      'text-indigo-600': !primary,
+      'w-full': block
+    })}
+  >
     {children}
-  </Styled.Button>
+  </button>
 );
 
 export default Button;

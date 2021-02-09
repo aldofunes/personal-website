@@ -8,8 +8,6 @@ import { IconProps } from 'components/ui/Icon';
 
 import { SectionTitle } from 'helpers/definitions';
 
-import * as Styled from './styles';
-
 interface Service {
   node: {
     id: string;
@@ -51,7 +49,7 @@ const Services: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Services>
+      <div className="flex flex-wrap -mx-3">
         {services.map((item) => {
           const {
             id,
@@ -59,12 +57,12 @@ const Services: React.FC = () => {
           } = item.node;
 
           return (
-            <Styled.ServiceItem key={id}>
+            <div className="w-full sm:w-1/2" key={id}>
               <InfoBlock icon={icon} title={title} content={description} />
-            </Styled.ServiceItem>
+            </div>
           );
         })}
-      </Styled.Services>
+      </div>
     </Container>
   );
 };

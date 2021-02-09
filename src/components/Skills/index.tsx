@@ -7,8 +7,6 @@ import ProgressBar from 'components/ui/ProgressBar';
 
 import { SectionTitle } from 'helpers/definitions';
 
-import * as Styled from './styles';
-
 interface Skill {
   node: {
     id: string;
@@ -48,7 +46,7 @@ const Skills: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Skills>
+      <div className="flex flex-wrap w-full">
         {skills.map((item) => {
           const {
             id,
@@ -56,12 +54,12 @@ const Skills: React.FC = () => {
           } = item.node;
 
           return (
-            <Styled.Skill key={id}>
+            <div key={id} className="w-full sm:w-1/2">
               <ProgressBar title={title} percentage={percentage} />
-            </Styled.Skill>
+            </div>
           );
         })}
-      </Styled.Skills>
+      </div>
     </Container>
   );
 };
