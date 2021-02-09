@@ -21,7 +21,7 @@ jobs:
         run: |
           npm run build
       - name: S3 Sync
-        uses: jakejarvis/s3-sync-action@master
+        uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --cache-control max-age=31536000,public --exclude index.html --delete
         env:
@@ -31,7 +31,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: 'public'
       - name: S3 Copy
-        uses: prewk/s3-cp-action@master
+        uses: prewk/s3-cp-action@v0.1.1
         with:
           args: --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type text/html
         env:
@@ -39,4 +39,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE: public/index.html
-          DEST: s3://{{ secrets.AWS_S3_BUCKET }}/index.html
+          DEST: s3://${{ secrets.AWS_S3_BUCKET }}/index.html
