@@ -139,3 +139,41 @@ elsif ${ENV} == "production"
   stack up cluster_maximum=5 env="production"
 end
 ```
+
+## Pattern: Stack Configuration Files
+
+We can manage the parameters for each stack instance in separate files.
+
+For example:
+
+```text
+├── src/
+   │   ├── cluster.tf
+   │   ├── host_servers.tf
+   │   └── networking.tf
+   ├── environments/
+   │   ├── test.tfvars
+   │   ├── staging.tfvars
+   │   └── production.tfvars
+   └── test/
+```
+
+This pattern is simple and very useful when the environments don't change often, as it requires to create and commit a new configuration file per environment. It is also slower to reach the stable production environments, since these files have to progress through the various stages before being committed to the main branch.
+
+## Pattern: Wrapper Stack
+
+Let's say we write our infrastructure code as reusable modules, kind of like a library. A wrapper stack is a code project that imports and uses those modules, passing the appropriate parameters to them. In that sense, every environment is its own code project. We can set up independent repositories for them using git. The only thing we must make sure does not get into these repos are secrets, for those we can leverage other patterns, like using environment variables, or untracked configuration files.
+
+There's a catch, though. There is added complexity by having to manage the reusable modules and the projects that use them. Furthermore, having separate projects tempt people into adding specific logic to one of them to customize it without including it upstream.
+
+## Pattern: Pipeline Stack Parameters
+
+Delivery pipelines allow us to set at the very least environment variables via some admin panel, a CLI or even an API. We can hook up our project in one such pipeline, and let it configure our project. An added bonus is that the entire team can use it without having to share parameters or even secrets. The catch is that we become dependant on the pipeline. If for some reason, the pipeline is offline, or simply not accessible, we cannot make changes to our infrastructure.
+
+Also, the first thing attackers look for when gaining access to a network are CI/CD servers because they are full of admin-level credentials.
+
+## Pattern: Stack Parameter Registry
+
+We can store all our parameters in a centralized registry, this can range from simple files in some file server, to a Consul cluster or a SQL database. Of course, we have to use another pattern to set the connection parameters to our registry; but once plugged it, changing it becomes a matter of executing a query, or modifying a file.
+
+The main issue with this pattern is the fact that we are adding something more to manage, the registry itself. This registry is an extra moving piece and a potential point of failure.
