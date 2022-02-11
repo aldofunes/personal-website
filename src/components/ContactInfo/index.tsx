@@ -58,7 +58,7 @@ const ConctactInfo: React.FC = () => {
         } = item.node;
 
         return (
-          <div className="w-full sm:w-1/2" key={id}>
+          <div className="w-full md:w-1/3" key={id}>
             <InfoBlock icon={icon} title={title} content={content} url={url} center />
           </div>
         );
