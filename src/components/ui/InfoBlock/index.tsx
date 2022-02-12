@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cx from 'classnames';
-import Icon, { IconProps } from 'components/ui/Icon';
+import Icon, { IconProps } from '../Icon';
 
 interface Props {
   title: string;

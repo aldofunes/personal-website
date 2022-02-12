@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Container from 'components/ui/Container';
+import Container from '../ui/Container';
 
 const Footer: React.FC = () => (
   <footer className="border-t border-gray-200 dark:border-gray-600 py-4">

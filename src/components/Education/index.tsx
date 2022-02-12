@@ -1,20 +1,20 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Timeline from 'components/ui/Timeline';
-import Container from 'components/ui/Container';
-import TitleSection from 'components/ui/TitleSection';
-import FormatHtml from 'components/utils/FormatHtml';
+import Timeline from '../ui/Timeline';
+import Container from '../ui/Container';
+import TitleSection from '../ui/TitleSection';
+import FormatHtml from '../utils/FormatHtml';
 
-import { SectionTitle } from 'helpers/definitions';
+import { SectionTitle } from '../../helpers/definitions';
 
-interface Education {
+interface EducationEdge {
   node: {
     id: string;
-    html: React.ReactNode;
+    html: string;
     frontmatter: {
       university: string;
-      degree: string;
+      degrees: string[];
       startDate: string;
       endDate: string;
     };
@@ -40,7 +40,7 @@ const Education: React.FC = () => {
             html
             frontmatter {
               university
-              degree
+              degrees
               startDate
               endDate
             }
@@ -51,7 +51,7 @@ const Education: React.FC = () => {
   `);
 
   const sectionTitle: SectionTitle = markdownRemark.frontmatter;
-  const education: Education[] = allMarkdownRemark.edges;
+  const education: EducationEdge[] = allMarkdownRemark.edges;
 
   return (
     <Container section>
@@ -61,14 +61,14 @@ const Education: React.FC = () => {
         const {
           id,
           html,
-          frontmatter: { university, degree, startDate, endDate }
+          frontmatter: { university, degrees, startDate, endDate }
         } = item.node;
 
         return (
           <Timeline
             key={id}
             title={university}
-            subtitle={degree}
+            subtitles={degrees}
             content={<FormatHtml content={html} />}
             startDate={startDate}
             endDate={endDate}

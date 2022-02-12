@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { ImageSharpFluid } from 'helpers/definitions';
+import { ImageSharpFluid } from '../../helpers/definitions';
 
 const Logo: React.FC = () => {
   const { site, placeholderImage } = useStaticQuery(graphql`

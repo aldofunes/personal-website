@@ -1,20 +1,20 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Timeline from 'components/ui/Timeline';
-import Container from 'components/ui/Container';
-import TitleSection from 'components/ui/TitleSection';
-import FormatHtml from 'components/utils/FormatHtml';
+import Timeline from '../ui/Timeline';
+import Container from '../ui/Container';
+import TitleSection from '../ui/TitleSection';
+import FormatHtml from '../utils/FormatHtml';
 
-import { SectionTitle } from 'helpers/definitions';
+import { SectionTitle } from '../../helpers/definitions';
 
-interface Experience {
+interface ExperienceEdge {
   node: {
     id: string;
-    html: React.ReactNode;
+    html: string;
     frontmatter: {
       company: string;
-      position: string;
+      positions: string[];
       startDate: string;
       endDate: string;
     };
@@ -40,7 +40,7 @@ const Experience: React.FC = () => {
             html
             frontmatter {
               company
-              position
+              positions
               startDate
               endDate
             }
@@ -51,7 +51,7 @@ const Experience: React.FC = () => {
   `);
 
   const sectionTitle: SectionTitle = markdownRemark.frontmatter;
-  const experiences: Experience[] = allMarkdownRemark.edges;
+  const experiences: ExperienceEdge[] = allMarkdownRemark.edges;
 
   return (
     <Container section>
@@ -61,14 +61,14 @@ const Experience: React.FC = () => {
         const {
           id,
           html,
-          frontmatter: { company, position, startDate, endDate }
+          frontmatter: { company, positions, startDate, endDate }
         } = item.node;
 
         return (
           <Timeline
             key={id}
             title={company}
-            subtitle={position}
+            subtitles={positions}
             content={<FormatHtml content={html} />}
             startDate={startDate}
             endDate={endDate}

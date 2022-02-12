@@ -1,9 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Banner from 'components/ui/Banner';
+import Banner from '../ui/Banner';
 
-import { SectionTitle } from 'helpers/definitions';
+import { SectionTitle } from '../../helpers/definitions';
 
 interface SectionHeroBanner extends SectionTitle {
   content: string;

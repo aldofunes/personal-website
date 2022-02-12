@@ -1,9 +1,10 @@
 ---
-category: 'education'
-university: 'Tec de Monterrey'
-degree: 'Bachelor of Science in Business Informatics'
-startDate: 'Aug 2013'
-endDate: 'May 2018'
+category: education
+university: Tec de Monterrey
+degrees:
+  - Bachelor of Science in Business Informatics
+startDate: Aug 2013
+endDate: May 2018
 ---
 
 Awarded with the _Premio Ceneval al Desempeño de Excelencia-EGEL_ for high-performance.

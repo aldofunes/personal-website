@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Layout from 'components/Layout';
-import SEO from 'components/SEO';
-import Container from 'components/ui/Container';
-import TitleSection from 'components/ui/TitleSection';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
+import Container from '../components/ui/Container';
+import TitleSection from '../components/ui/TitleSection';
 
 const NotFoundPage: React.FC = () => (
   <Layout>

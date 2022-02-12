@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-personal-website-starter",
+  "name": "aldofunes-personal-website",
   "private": true,
-  "description": "Gatsby Markdown Personal Website Starter, using Typescript, Styled Components, Tailwindcss and Framer Motion.",
+  "description": "Gatsby Markdown Personal Website, using Typescript, Styled Components, Tailwindcss and Framer Motion.",
   "version": "0.1.0",
-  "author": "Saimir Kapaj",
+  "author": "Aldo Funes",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -65,7 +65,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write '**/*.{ts,js,tsx,jsx,json,md}'",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -73,9 +73,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SaimirKapaj/gatsby-markdown-typescript-personal-website"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/aldofunes/personal-website"
   }
 }

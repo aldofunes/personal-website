@@ -189,5 +189,3 @@ The heavy burden will lie on integration tests. If we want three subnets: `subne
 Integration tests are slower than unit tests, since we must provision actual resources on real platforms. The slowness gets worse when we make end-to-end tests. When we provision our entire infrastructure to test, that is.
 
 The key thing is to identify risks, in our case, our risk is that we may accidentally expose `subnet-c` to the outside world; therefore we test to ensure that risk does not become a reality.
-
-

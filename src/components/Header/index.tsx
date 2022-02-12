@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Container from 'components/ui/Container';
+import Container from '../ui/Container';
 import MainNav from './MainNav';
 import Logo from './Logo';
 

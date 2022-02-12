@@ -32,7 +32,7 @@ module.exports = {
               linkImagesToOriginal: false
             }
           },
-          `gatsby-remark-prismjs`,
+          `gatsby-remark-prismjs`
         ]
       }
     },

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import Container from 'components/ui/Container';
-import Button from 'components/ui/Button';
-import TitleSection from 'components/ui/TitleSection';
+import Container from '../Container';
+import Button from '../Button';
+import TitleSection from '../TitleSection';
 
 interface Props {
   title: string;
