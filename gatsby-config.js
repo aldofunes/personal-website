@@ -1,3 +1,5 @@
+const siteAddress = new URL('https://www.aldofunes.com');
+
 module.exports = {
   siteMetadata: {
     title: `Aldo Funes`,
