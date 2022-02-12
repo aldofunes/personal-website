@@ -18,22 +18,22 @@ Currently leading a team of 6 developers, owning:
 
 ---
 
-Revamped observability strategies integrating: monitoring, alerting and proactive analysis
+Revamped observability strategies
 
 ---
 
-Led architectural design for a distributed, microservices based system which resulted in a more efficient, faster platform.
+Led architectural design for a more efficient platform.
 
 ---
 
-Led engineering team to optimize microservices and infrastructure, which resulted in ≈60% cost savings.
+Reduced infrastructure costs by 60% after optimizing microservices and infrastructure.
 
 ---
 
-Implemented automation pipelines for CI/CD, which resulted in a 90% reduction of man-hours dedicated for: tests, builds, deployments; furthermore, the team can seamlessly deploy multiple times per day.
+Reduced time spent executing tests, builds and deployments by 90% after implementing well-designed CI/CD pipelines.
 
 ---
 
-As a senior member of the cyber-security team, enabled automated rules to detect and neutralize several attacks, and patch the vulnerabilities that enabled them.
+Increased cadence from 1 biweekly deployment to several deployments per day.
 
 ---
