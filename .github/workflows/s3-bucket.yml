@@ -23,7 +23,12 @@ jobs:
       - name: S3 Copy
         uses: prewk/s3-cp-action@v0.1.1
         with:
-          args: >
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          source: public
+          dest: s3://${{ secrets.AWS_S3_BUCKET }}
+          flags: >
             --recursive
             --exclude "*"
             --include "static/*"
@@ -33,16 +38,15 @@ jobs:
             --exclude "sw.js"
             --metadata-directive REPLACE
             --cache-control public,max-age=31536000
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE: public
-          DEST: s3://${{ secrets.AWS_S3_BUCKET }}
       - name: S3 Copy
         uses: prewk/s3-cp-action@v0.1.1
         with:
-          args: >
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          source: public/index.html
+          dest: s3://${{ secrets.AWS_S3_BUCKET }}/index.html
+          flags: >
             --recursive
             --exclude "static/*"
             --exclude "*.js"
@@ -51,9 +55,3 @@ jobs:
             --include "sw.js"
             --metadata-directive REPLACE
             --cache-control public,max-age=0,must-revalidate
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE: public/index.html
-          DEST: s3://${{ secrets.AWS_S3_BUCKET }}/index.html
