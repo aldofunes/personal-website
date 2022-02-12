@@ -1,5 +1,5 @@
 ---
 category: 'skills'
 title: 'PostgreSQL'
-percentage: 70
+percentage: 75
 ---

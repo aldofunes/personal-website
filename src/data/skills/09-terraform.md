@@ -1,5 +1,5 @@
 ---
 category: 'skills'
 title: 'Terraform'
-percentage: 68
+percentage: 72
 ---
