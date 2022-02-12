@@ -4,7 +4,7 @@ company: Airtm
 positions:
   - FullStack Software Engineer
   - Lead Software Architect
-  - Senior Technical Leader
+  - Software Engineering Manager
 startDate: Jun 2018
 endDate: Present
 ---
